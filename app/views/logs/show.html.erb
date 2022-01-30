@@ -1,0 +1,14 @@
+<div class="container">
+
+  <h3>Show Data Feed Details</h3>
+  <p id="notice"><%= notice %></p>
+
+  <p>
+    <strong>Name:</strong>
+    <%= @log.name %>
+  </p>
+  <%= link_to 'View file', @log.file %>
+
+  <%= link_to 'Edit', edit_log_path(@log) %> |
+  <%= link_to 'Back', logs_path %>
+</div>

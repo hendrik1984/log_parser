@@ -1,0 +1,75 @@
+<div class="container">
+    <div class="row">
+        <h2>Log Parser</h2>
+        <div class="col-sm-4">
+            <%= link_to 'Upload file', logs_path, class: "btn btn-warning" %><br>
+        </div>
+        <hr>
+    </div>
+
+    <div class="row">
+        <%= simple_form_for :search, url: root_path, method: "GET", html: { class: 'row g-3' } do |f| %>
+            <div class="col-sm-6">
+                <div class="row mb-3">
+                    <div class="col-sm-8">
+                        <%= f.input :ip, input_html: {value: ""}, label: "IP Address", required: false %>
+                    </div>
+                </div>
+                <div class="row mb-3">
+                    <div class="col-sm-8">
+                        <%= f.input :method, input_html: {value: ""}, required: false %>
+                    </div>
+                </div>
+
+                <div class="row mb-3">
+                    <div class="col-sm-8">
+                        <%= f.input :code, input_html: {value: ""}, required: false %>
+                    </div>
+                </div>
+
+                <div class="row mb-3">
+                    <div class="col-sm-8">
+                        <%= f.input :start_time, input_html: {value: ""}, placeholder: "dd/mm/yy hh:mm:ss", required: false %>
+
+                        <%= f.input :end_time, input_html: {value: ""}, placeholder: "dd/mm/yy hh:mm:ss", required: false %>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-sm-6">
+                <div class="row mb-3">
+                    <div class="col-sm-8">
+                        <%= f.input :uri_path, input_html: {value: ""}, label: "Path", required: false %>
+                    </div>
+                </div>
+                <div class="row mb-3">
+                    <div class="col-sm-8">
+                        <%= f.input :user_agent, input_html: {value: ""}, required: false %>
+                    </div>
+                </div>
+            </div>
+
+            <div class="row mb-3">
+                <div class="col-sm-8">
+                    <%= f.submit "Search", class: "btn btn-primary"%>
+                </div>
+            </div>
+        <% end %>
+    </div>
+
+    <div class="row">
+        <% if @search.present? %>
+            <% if @result_parses.length == 0 %>
+                <div class="bg-light p-5 rounded mt-3">
+                    No Results
+                </div>
+            <% else %>
+                <div class="bg-light p-5 rounded mt-3">
+                    <% @result_parses.each do |parses| %>
+                        <div><%= parses %></div><hr>
+                    <% end %>
+                </div>
+            <% end %>
+        <% end %>
+    </div>
+</div>
