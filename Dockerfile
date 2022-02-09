@@ -19,6 +19,4 @@ RUN rails webpacker:install
 RUN bundle install
 
 # Configure the main process to run when running the image
-# CMD ["rails", "webpacker:install"]
-
 CMD ["rails", "server", "-b", "0.0.0.0"]
